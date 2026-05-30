@@ -49,6 +49,7 @@ jobs:
           build-args: |
             BASE_URL=/tools/it/
             VITE_AVAILABLE_LOCALES=en,zh
+            VITE_LANGUAGE=zh
           labels: ${{ steps.meta.outputs.labels }}
           tags: ${{ steps.meta.outputs.tags }}
           cache-from: type=gha,scope=scutbot-tools-it
