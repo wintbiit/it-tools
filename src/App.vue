@@ -41,18 +41,12 @@ watchEffect(() => {
   });
 });
 
-const defaultLocale = get(getITToolsSetting('default_locale', locale.value));
-const storedLocale = useStorage('locale', defaultLocale);
-const defaultLocaleApplied = useStorage('scutbot:default_locale_applied', false);
+locale.value = get(getITToolsSetting('default_locale', locale.value));
 
-if (!defaultLocaleApplied.value) {
-  storedLocale.value = defaultLocale;
-  defaultLocaleApplied.value = true;
-}
-
-locale.value = storedLocale.value;
-
-syncRef(locale, storedLocale);
+syncRef(
+  locale,
+  useStorage('locale', locale),
+);
 </script>
 
 <template>
